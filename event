@@ -1,0 +1,29 @@
+EVENT MODÜLÜ
+Node.js'in events modülü, olay işleme mekanizmalarını sağlayan bir modüldür. Bu modül, EventEmitter sınıfını içerir, bu sınıf, olayları oluşturmanıza, olaylara abone olmanıza ve olayları tetiklemenize olanak tanır. EventEmitter sınıfı, Node.js'in birçok yerinde kullanılır ve bazı modüller bu sınıfı kullanarak olay tabanlı etkileşim sağlar.
+
+EventEmitter sınıfının bazı özellikleri şunlardır:
+on(eventName, listener): Belirtilen olay için bir olay dinleyicisi kaydeder. eventName, dinlemek istediğiniz olayın adını belirtir. listener, olay tetiklendiğinde çalışacak işlevi belirtir.
+emit(eventName, [args]): Belirtilen olayı tetikler. eventName, tetiklemek istediğiniz olayın adını belirtir. args, olaya geçirilebilecek isteğe bağlı argümanları belirtir.
+once(eventName, listener): Belirtilen olay için bir kez çalışacak bir olay dinleyicisi kaydeder. eventName, dinlemek istediğiniz olayın adını belirtir. listener, olay tetiklendiğinde bir kez çalışacak işlevi belirtir.
+removeListener(eventName, listener): Belirtilen olay dinleyicisini kaldırır. eventName, kaldırmak istediğiniz olayın adını belirtir. listener, kaldırmak istediğiniz dinleyiciyi belirtir.
+removeAllListeners([eventName]): Belirtilen olay veya tüm olaylar için tüm olay dinleyicilerini kaldırır. eventName, kaldırmak istediğiniz olayın adını belirtir. Eğer bu parametre belirtilmezse, tüm olay dinleyicileri kaldırılır.
+Aşağıdaki örnek, EventEmitter sınıfının kullanımını gösterir:
+
+const EventEmitter = require('events');
+class MyEmitter extends EventEmitter {}
+// Yeni bir olay yayınlama için MyEmitter sınıfından bir örnek oluşturun
+const myEmitter = new MyEmitter();
+// "hello" adlı bir olay dinleyicisi kaydedin
+myEmitter.on('hello', () => {
+  console.log('Merhaba!');
+});
+// "hello" adlı bir olay tetikleyin
+myEmitter.emit('hello');
+
+Bu örnek, EventEmitter sınıfını kullanarak bir sınıf oluşturur ve ardından bu sınıftan bir örnek oluşturur. on yöntemi kullanılarak, "hello" adlı bir olay dinleyicisi kaydedilir ve emit yöntemi kullanılarak bu olay tetiklenir.
+Node.js'in birçok modülü, EventEmitter sınıfını kullanarak olay tabanlı etkileşim sağlar. Örneğin, HTTP sunucusu
+
+class MyEmitter extends EventEmitter ifadesi, EventEmitter sınıfından türetilen MyEmitter adlı bir sınıf tanımlar. extends anahtar kelimesi, MyEmitter sınıfının EventEmitter sınıfından kalıtım alacağını gösterir. Bu, MyEmitter sınıfının, EventEmitter sınıfında tanımlı tüm özellikleri ve yöntemleri de içereceği anlamına gelir.
+Böylece, MyEmitter sınıfı, EventEmitter sınıfında tanımlı olan on, emit, once, removeListener ve removeAllListeners gibi yöntemlere erişebilir ve bunları kullanabilir.
+Bu yöntemleri kullanarak, MyEmitter sınıfı olaylar oluşturabilir ve bu olaylara abone olan dinleyicileri tetikleyebilir. MyEmitter sınıfı, EventEmitter sınıfının tüm özelliklerini ve yöntemlerini kalıtım aldığı için, MyEmitter sınıfı da olay tabanlı etkileşimler sağlayabilir.
+Yukarıdaki örnekte, class MyEmitter extends EventEmitter ifadesi, MyEmitter adlı bir sınıf oluşturur ve bu sınıf EventEmitter sınıfından kalıtım alır. MyEmitter sınıfı, EventEmitter sınıfının özelliklerini ve yöntemlerini içerir ve bunları kullanarak hello adlı bir olayı tetikleyebilir ve bu olaya abone olan dinleyicileri çalıştırabilir.
